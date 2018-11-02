@@ -2,26 +2,35 @@
 <html>
 <head>
   <title>fotoFinder</title>
-  <link rel="stylesheet" type="text/css" href="syles.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
 </head>
 <body>
-  <header>
-    <h1 class="white">FOTO<span class="white">FINDER</span></h1>
+  <header class="top">
+    <h1 class="white">FOTO<img src="Images.foto-finder-logo.svg">FINDER</h1>
     <form class="search-form">
-      <input type="text" placeholder=" Search" id="search-input">
-      <button type="submit" class="search-button">
-        <i class="fas fa-search"></i>
-      </button>
+    <input type="text" placeholder=" Search" id="search-input">
+    <button type="submit" class="search-button">
+     <i class="fas fa-search"></i>
+    </button>
     </form>
   </header>
   <main>
-    <label>Title</label>
-    <input type="" name="">
-    
+    <form class="idea-form">
+      <label for="title-input">Title</label>
+        <input type="text" id="title-input" class="inputs">
+      <label for="caption-input">Caption</label>
+        <textarea type="text" id="caption-input" class="inputs"></textarea>
+      <button type="submit" class="choose-file-button buttons">Choose File</button>
+      <div class="">
+        <button class="view-favorites-button buttons">View Favorites</button>
+        <button class="add-album-button buttons">Add To Album</button>
+      </div>
+    </form>
   </main>
-  <section>
-    
+  <section class="card-section">
+    <article class="overflow" id="card-article"></article>
+    <button class="show-more-button buttons">Show More</button>
   </section>
 </body>
 </html>

@@ -1,0 +1,132 @@
+* {
+  font-family: Open Sans, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/*Nav Bar*/
+.top {
+  background-color: #3e2a35;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-title-purple {
+  color: #afa5cd;
+  font-weight: 800;
+  padding-left: 25px;
+}
+
+.white {
+  color: #FFFFFF; 
+  font-weight: 800;
+  padding-left: 4px;
+}
+
+.search-form {
+  display: flex;
+  padding: 25px;
+}
+
+#search-input {
+  border-radius: 5px 0px 0px 5px;
+  border: none;
+  color: #8A8494;
+  outline-color: #afa5cd;
+  width: 100%;
+}
+
+.search-button {
+  background-color: #C2C1C0;
+  border-radius: 0px 1px 1px 0px;
+  border: none;
+}
+
+.search-button:hover {
+  cursor: pointer;
+}
+
+.fa-search {
+  color: #FFFFFF;
+  padding: 6px;
+}
+
+/* create new card section */
+main {
+  background-color: #3e2a35;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+label {
+  color: #FFFFFF;
+  font-weight: 300;
+}
+
+.idea-form {
+  grid-column: 2/3;
+  padding-top: 20px;
+}
+
+#title-input {
+  height: 4vh;
+  border-width: 1px; 
+}
+
+#caption-input {
+  height: 8vh;
+}
+
+.inputs {
+  border: solid 1px #d4d2d8;
+  border-radius: 1px;
+  margin-bottom: 18px;
+  margin-top: 5px;
+  outline-color: #afa5cd;
+  width: 100%;
+}
+
+.buttons{
+  background-color: #5B4447;
+  border-radius: 1px;
+  color: #FFFFFF;
+  border: transparent;
+  font-weight: 700;
+  height: 5vh;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.choose-file-button {
+  width: 100%;
+}
+
+.buttons:hover {
+  cursor: pointer;
+}
+
+.save-button:disabled {
+  background-color: #808080;
+}
+
+.filter-buttons-section {
+  display: flex;
+}
+
+.add-album-button {
+  width: 34%;
+}
+
+.view-favorites-button {
+  width: 34%;
+}
+/*card section*/
+.card-section {
+  background-color: #C2B2B4;
+  width: 100%;
+  height: 100%;
+}
+
+.show-more-button {
+  width: 33%;
+}
