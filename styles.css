@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+body {
+  background-color: #C2B2B4;
+}
+
 /*Nav Bar*/
 .top {
   background-color: #3e2a35;
@@ -109,8 +113,9 @@ label {
   background-color: #808080;
 }
 
-.filter-buttons-section {
+.buttons-section {
   display: flex;
+  justify-content: space-between;
 }
 
 .add-album-button {
@@ -122,9 +127,11 @@ label {
 }
 /*card section*/
 .card-section {
+  display: flex; 
   background-color: #C2B2B4;
   width: 100%;
   height: 100%;
+  padding-left: 33%
 }
 
 .show-more-button {
