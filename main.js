@@ -1,43 +1,92 @@
-document.querySelctor('choose-file-button').addEventListener('click', );
-document.querySelctor('add-album-button').addEventListener('click',);
-document.querySelctor('view-favorites-button').addEventListener('click',);
-document.getElementById('search-input').addEventListener('keyup', searchFilter);
+var titleInput =  document.querySelector('.title-input');
+var captionInput = document.querySelector('.caption-input');
+
+document.querySelector('.add-to-album-button').addEventListener('click', fotoCardProperties);
+document.getElementById('card-article').addEventListener('click', removeFotoCard);
+document.getElementById('card-article').addEventListener('click', favoriteFotoCard);
+document.getElementById('card-article').addEventListener('focusout', updateCardInputs);
+
 
 reloadCards();
 
-
-
-
-function searchFilter() {
-  Object.keys(localStorage).forEach(function(cardObj) {
-    let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
-    let matchingCards = matchingCardsObject.parentNode.parentNode;
-    let localStorageTitle = JSON.parse(localStorage[cardObj]).title;
-    let localStorageBody = JSON.parse(localStorage[cardObj]).body;
-    let searchInput = document.getElementById('search-input').value.toLowerCase();
-      if (!localStorageTitle.toLowerCase().includes(searchInput) && !localStorageBody.toLowerCase().includes(searchInput)) {
-        matchingCards.classList.add('display-mode-none');
-      } else if (localStorageTitle.toLowerCase().includes(searchInput) && localStorageBody.toLowerCase().includes(searchInput)) {
-        matchingCards.classList.remove('display-mode-none');
-      }
-    })
+function favoriteFotoCard(e) {
+  if (e.target.className === 'favorite-icon') {
+    var id = e.target.closest('.card').id;
+    var parsedFoto = JSON.parse(localStorage.getItem(id));
+    var faveFotoObj = new Foto(parsedFoto.title, parsedFoto.caption, parsedFoto.file, parsedFoto.id, parsedFoto.favorite);
+    faveFotoObj.updateFavorite();
+    e.target.src = updateFaveIcon(faveFotoObj);
+    faveFotoObj.saveToStorage();
+  }
 };
 
-function populateIdeaCard() {
+function updateFaveIcon(faveFotoObj) {
+  if (faveFotoObj.favorite) {
+    return "images/favorite-active.svg";
+  } else {
+    return "images/favorite.svg";
+  }
+};
+
+
+function reloadCards() {
+  document.querySelector('.foto-form').reset();
+    Object.keys(localStorage).forEach(function(key) {
+      populateFotoCard(JSON.parse(localStorage.getItem(key)));
+  })
+};
+
+function fotoCardProperties(e) {
+  e.preventDefault();
+  var fotoUpload = URL.createObjectURL(document.getElementById('choose-file-input').files[0]);
+  var newFotoObj = new Foto(titleInput.value, captionInput.value, fotoUpload);
+  newFotoObj.saveToStorage();
+  populateFotoCard(newFotoObj);
+  document.querySelector('.foto-form').reset();
+}
+
+function populateFotoCard(newFotoObj) {
   var card = document.createElement('section');
   var cardArticle = document.getElementById('card-article');
-  card.className = 'photo-card';
-  card.dataset.index = photo.id;
+  card.className='card';
+  card.id = newFotoObj.id;
   card.innerHTML = 
-    `<div class="photo-card" data-id=${photo.id}>
-        <p class="title">This is a long title to test the hidden attribute</p>
-        <img class="photo" src="assets/test.jpg" alt="photo">
-        <p class="caption">This is a test caption to see what it looks like when we have a long block of text.</p>
-        <section class="card-footer">
-          <img class="card-icons" src="assets/delete.svg" alt="delete icon">
-          <img class="card-icons favorite-icon" src="assets/favorite.svg" alt="favorite icon">
-        </section>
-        <p class="card-placeholder">Add some photos to your album!</p>`;
-
-  cardArticle.insertBefore(card, cardArticle.firstChild); 
+    `<div class="card-wrapper">
+      <h4 class="card-title" contenteditable="true">${newFotoObj.title}</h4>
+      <div class="uploaded-image">
+        <img class="uploaded-image" src="${newFotoObj.file}">
+      </div>
+      <h4 class="card-caption" contenteditable="true">${newFotoObj.caption}</h4>
+      <section class="card-footer">
+        <img class="delete-icon" src="images/delete.svg">
+        <img class="favorite-icon" src="${updateFaveIcon(newFotoObj)}">
+      </section>
+    </div>`;
+  cardArticle.prepend(card);
 };
+
+function removeFotoCard(e) {
+  if (e.target.className === 'delete-icon') {
+    var id = e.target.closest('.card').id;
+    var deleteMethodObj = new Foto('', '', '', id);
+    deleteMethodObj.deleteFromStorage();
+    e.target.closest('.card').remove();
+  }
+};
+
+function updateCardInputs(e) {
+  var id = e.target.closest('.card').id;
+  var parsedFoto = JSON.parse(localStorage.getItem(id));
+  var foto = new Foto(parsedFoto.title, parsedFoto.body, '', id);
+    if (e.target.className === 'card-title') {
+      foto.updateFoto(e.target.innerText, 'title');
+    }
+    if (e.target.className === 'card-caption') {
+      foto.updateFoto(e.target.innerText, 'caption');
+    }
+};
+
+
+
+
+
