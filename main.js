@@ -52,14 +52,13 @@ function setProperties() {
   addCard(newPhoto); 
 };
 
-
 function favoriteImage(photo) {
   if (photo.favorite) {
     return "images/favorite-active.svg";
   } else {
     return "images/favorite.svg";
   }
-}
+};
 
 function changeImage(e, photo) {
   var elem = e.target;
@@ -72,7 +71,6 @@ function changeImage(e, photo) {
   }
 };
 
-
 function removePhotoCard(e) {
   if (e.target.className === 'delete-icon card-icon') {
     var id = e.target.closest('.photo-card').firstChild.firstChild.nextSibling.id;
@@ -84,7 +82,6 @@ function removePhotoCard(e) {
     e.target.closest('.photo-card').remove();
   }
 };
-
 
 function updateCard(e) {
   var id = e.target.closest('.photo-card').firstChild.firstChild.nextSibling.id;
@@ -99,7 +96,6 @@ function updateCard(e) {
     photo.updatePhoto(e.target.innerText, 'caption');
   }
 };
-
 
 function favorite(e) {
   if (e.target.classList.contains('favorite-icon')) {
@@ -123,13 +119,9 @@ function update(inc) {
     counter--;
   }
   document.getElementById('favorite-button').innerText = `View ${counter} Favorites`;
-}
-
+};
 
 function searchFilter() {
-  //logic to find out whether it includes favorite-active and then do below
-
-
   Object.keys(localStorage).forEach(function(cardObj) {
     let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
     let matchingCards = matchingCardsObject.parentNode.parentNode;
@@ -142,18 +134,16 @@ function searchFilter() {
       matchingCards.classList.remove('display-mode-none');
     }
   });
-}
-
+};
 
 function toggleCards() {
   var cards = document.querySelectorAll('.photo-card');
   if (document.getElementById('favorite-button').innerHTML === `View ${counter} Favorites`) {
     document.getElementById('favorite-button').innerHTML = 'View All Photos';
     cards.forEach(function(card) {
-      if (card.childNodes[2].childNodes[3].classList.contains('favorite-active')) {
+  if (card.childNodes[2].childNodes[3].classList.contains('favorite-active')) {
         card.classList.remove('display-mode-none');
-      } 
-      else {
+      } else {
         card.classList.add('display-mode-none');
       }
     })
@@ -163,7 +153,7 @@ function toggleCards() {
       card.classList.remove('display-mode-none');
     });
   }
-}
+};
 
 
 
