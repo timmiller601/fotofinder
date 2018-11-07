@@ -15,4 +15,4 @@
 
 # Mobile Version
 
-! [alt text](Images/mobilefoto.png)
+![alt text](Images/mobilefoto.png)
