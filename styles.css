@@ -1,5 +1,3 @@
-/* entire page */
-
 * {
   font-family: Open Sans, sans-serif;
   margin: 0px;
@@ -10,41 +8,53 @@ body {
   background-color: #C2B2B4;
 }
 
-/* page head */
 header {
   background-color: #3E2A35;
   display: flex;
   justify-content: space-between;
-  padding: 15px 20px;
 }
 
-h1 {
-  color: #FFF;
-  letter-spacing: 2px
+.display-mode-none {
+  display: none;
 }
 
-.foto-finder-logo {
-  width: 40px;
+.page-title-foto {
+  color: #FFFFFF;
+  font-weight: 800;
+  padding-left: 20px;
+  margin-top: 10px;
 }
 
-/* search input */
+.page-title-finder {
+  color: #FFFFFF; 
+  font-weight: 800;
+}
+
+.site-logo {
+  height: 50px;
+  width: 50px;
+  padding: 0px 10px;
+  margin-bottom: -10px;
+}
+
 .search-form {
   display: flex;
-  height: 4vh;
-  padding-top: 5px;
+  padding: 25px;
+  height: 30px;
+  width: 260px;
 }
 
 #search-input {
-  border-radius: 3px 0px 0px 3px;
+  border-radius: 5px 0px 0px 5px;
   border: none;
   color: #8A8494;
-  outline-color: #bfb3b4;
-  padding: 5px;
+  width: 100%;
+  padding-left: 5px;
 }
 
 .search-button {
-  background-color: #C2B2B4;
-  border-radius: 0px 3px 3px 0px;
+  background-color: #C2C1C0;
+  border-radius: 0px 5px 5px 0px;
   border: none;
 }
 
@@ -55,42 +65,27 @@ h1 {
 .fa-search {
   color: #FFFFFF;
   padding: 6px;
-  font-size: 13px;
 }
 
-/* main section */
-main {
+.entry-section {
   background-color: #3E2A35;
-}
-
-/* title and caption inputs */
-.foto-form {
-  width: 70%;
-  margin: auto;
-  grid-column: 2/3;
   padding-top: 20px;
 }
 
-label {
-  color: #bfb3b4;
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: 1px;
+.labels {
+  color: #c2b2b4;
+  font-weight: 600;
 }
 
-.title-input,
-.caption-input {
-  height: 4.5vh;
-  border: solid 1px #d4d2d8;
-  margin-bottom: 18px;
-  margin-top: 5px;
-  outline-color: #bfb3b4;
-  width: 100%;
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  margin: 0 auto;
+  margin-top: 16px;
 }
 
-/* choose file button */
-
-#choose-file-input {
+.inputfile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -99,100 +94,174 @@ label {
   z-index: -1;
 }
 
-.choose-file-button {
+.inputfile + label {
+  height: 35px;
+  margin-top: -14px;
+  color: #FFFFFF;
   background-color: #5B4447;
-  border-color: #5B4447;
-  color: #FFF;
-  height: 4.5vh;
-  letter-spacing: 1px;
-  width: 100%;
-  font-size: 12px;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-weight: 600;
+  width: 74%;
+  padding-top: 14px;
 }
 
-.choose-file-div {
-  background-color: #5B4447;
-  /*height: 4.5vh;*/
-  padding: 2% 0% 2% 40%;
+#title-input,
+#caption-input {
+  border: solid 1px #d4d2d8;
+  border-radius: 2px;
+  height: 38px;
 }
 
-.choose-file-button:disabled {
-  background-color: #808080;
-}
-
-/* favorites & add to album buttons */
 .buttons {
-  background-color: #5B4447;
-  border-color: #5B4447;
-  color: #FFF;
-  height: 4.5vh;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 74.5%;
+  margin: 0 auto;
+  font-weight: 800;
+  margin-top: 40px;
+  align-items: center;
+  padding-top: 13px;
 }
 
-.buttons:hover,
-.choose-file-button:hover {
+.row-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 78%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+#favorite-button,
+#add-button {
+  height: 45px;
+  margin-bottom: 35px;
+  color: #FFFFFF;
+  background-color: #5B4447;
+  border: none;
+  width: 250px;
+  margin-left: 15px;
+  outline: none;
+  font-weight: 600;
+}
+
+#add-button {
+  margin-right: 14px;
+}
+
+.choose-button:hover,
+#favorite-button:hover,
+#add-button:hover  {
+  background-color: #938284;
   cursor: pointer;
 }
 
-.favorites-and-add-buttons {
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #938284;
+  cursor: pointer;
+}
+
+/* cards */
+
+.card-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-content, 
+.card-bottom {
+  margin-left: 60px;
+}
+
+.card-title {
+  color: #3E2A35;
+  padding: 5px 10px;
+  font-size: 18px;
+  overflow: hidden;
+}
+
+.card-caption {
+  height: 70px;
+  color: #3E2A35;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+
+.card-content {
   display: flex;
   justify-content: space-between;
-  margin-top: 18px;
-}
-
-.favorites-button,
-.add-to-album-button {
-  width: 42%;
-}
-
-/* uploaded cards */
-article {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 20px;
-}
-
-.card-wrapper {
-  background-color: white;
-  height: auto;
+  flex-direction: column;
   width: 220px;
-  border-radius: 2px;
-  border-width: 2px;
-  margin: 10px;
+  margin-top: 40px;
+  border-right: 2px solid #938284;
+  border-left: 2px solid #938284;
+  border-top: 2px solid #938284;
+}
+
+.card-bottom {
+  background-color: #5B4447;
+  width: 180px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 8px 20px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #938284;
+  border-right: 2px solid #938284;
+  border-left: 2px solid #938284;
+}
+
+h2 {
+  background-color: #FFFFFF;
 }
 
 h4 {
-  padding: 8px;
-  font-weight: 500;
-  height: 23px;
+  background-color: #FFFFFF;
 }
 
-/*.card-title {}
-}
-.card-caption {
-}*/
-
-.uploaded-image {
-  object-fit: cover;
-  width: 100%;
-  height: 140px;
+.card-icon {
+  height: 32px;
+  width: 32px;
 }
 
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  background-color: #5B4447;
-  height: 56px;
-}
-
-.delete-icon,
-.favorite-icon {
-  height: 30px;
-  padding: 12px;
-}
-
-.delete-icon:hover,
-.favorite-icon:hover {
+.card-icon:hover {
   cursor: pointer;
 }
+
+.card-image {
+ object-fit: fill;
+ width:  100%;
+ height: 150px;
+ background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 620px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-form {
+    width: 80%;
+  }
+  .inputs {
+    width: 80%;
+  }
+  .buttons {
+    width: 80%;
+    font-size: 13px;
+  }
+  .inputfile + label {
+    width: 100%;
+  }
+  .row-buttons {
+    width: 108%;
+    margin: 0px;
+  }
+}
+
+
 
