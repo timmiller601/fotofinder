@@ -1,8 +1,8 @@
-class Foto {
-  constructor(title, caption, file, id, favorite) {
+class Photo {
+  constructor(id, title, caption, file, favorite) {
+    this.id = id || Date.now();
     this.title = title;
     this.caption = caption;
-    this.id = id || Date.now();
     this.file = file;
     this.favorite = favorite || false;
   };
@@ -15,13 +15,8 @@ class Foto {
     localStorage.removeItem(this.id);
   };
 
-  updateFoto(text, type) {
+  updatePhoto(text, type) {
     this[type] = text;
     this.saveToStorage();
-  };
-
-  updateFavorite() {
-    this.favorite = !this.favorite;
   }
-
 };
